@@ -15,12 +15,12 @@ const CustomerFormComponent = () => {
   const { register, formState: { errors } } = useForm<CustomerType>();
 
   return (
-    <div className="flex justify-center items-start min-h-screen bg-gray-100 p-5">
-      <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-2xl">
-        <h1 className="text-2xl font-bold text-white bg-[#547792] rounded-2xl px-10 py-1 mb-6 w-fit mx-auto">
+    <div className="flex justify-center items-start min-h-screen bg-gray-100 py-5">
+      <div className="bg-white shadow-lg p-8 min-w-full max-w-2xl">
+        <h1 className="text-3xl font-semibold rounded-2xl px-10 py-1 mb-6 w-fit mx-auto">
           Customer Form
         </h1>
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4 max-w-lg mx-auto">
           
           <div className="flex flex-col">
             <label className="mb-1 font-semibold text-gray-700">Name:</label>
@@ -90,13 +90,15 @@ const CustomerFormComponent = () => {
               </span>
             )}
           </div>
+<div className="flex justify-center">
 
           <button
             type="submit"
-            className="mt-4 bg-[#547792] text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-colors"
-          >
+            className="mt-4 bg-[#547792] text-white font-semibold py-2 px-4 rounded w-3/5"
+            >
             Submit
           </button>
+            </div>
         </form>
       </div>
     </div>
