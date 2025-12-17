@@ -32,12 +32,16 @@ const CustomerDashboardComponent = () => {
     fetchCustomers();
   }, []);
 
+  const handleAddCustomer = (newCustomer: CustomerType) => {
+    setCustomers((prevCustomers) => [newCustomer,...prevCustomers]);
+  }
+
   return (
     <div>
       <HeaderComponent />
       <NavComponent />
       <HeroComponent />
-      <CustomerFormComponent />
+      <CustomerFormComponent onAddCustomer={handleAddCustomer} />
 
       <div className="my-10 px-5 md:px-10">
         {loading && (

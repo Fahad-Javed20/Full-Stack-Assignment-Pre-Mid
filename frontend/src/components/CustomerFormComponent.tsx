@@ -1,3 +1,7 @@
+interface CustomerFormProps {
+   onAddCustomer: (customer: CustomerType) => void;
+}
+
 import { useForm } from "react-hook-form";
 
 type CustomerType = {
@@ -11,8 +15,12 @@ type CustomerType = {
   };
 };
 
-const CustomerFormComponent = () => {
-  const { register, formState: { errors } } = useForm<CustomerType>();
+const CustomerFormComponent = ({onAddCustomer}:CustomerFormProps) => {
+  const { register,handleSubmit, formState: { errors } } = useForm<CustomerType>();
+
+  const onSubmit = (data: CustomerType) => {
+onAddCustomer(data);
+  };
 
   return (
     <div className="flex justify-center items-start min-h-screen bg-gray-100 py-5">
@@ -20,7 +28,7 @@ const CustomerFormComponent = () => {
         <h1 className="text-3xl font-semibold rounded-2xl px-10 py-1 mb-6 w-fit mx-auto">
           Customer Form
         </h1>
-        <form className="flex flex-col gap-4 max-w-lg mx-auto">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 max-w-lg mx-auto">
           
           <div className="flex flex-col">
             <label className="mb-1 font-semibold text-gray-700">Name:</label>
