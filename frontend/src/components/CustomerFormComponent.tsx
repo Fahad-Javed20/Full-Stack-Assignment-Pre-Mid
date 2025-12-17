@@ -1,5 +1,5 @@
 interface CustomerFormProps {
-   onAddCustomer: (customer: CustomerType) => void;
+  onAddCustomer: (customer: CustomerType) => void;
 }
 
 import { useForm } from "react-hook-form";
@@ -15,11 +15,17 @@ type CustomerType = {
   };
 };
 
-const CustomerFormComponent = ({onAddCustomer}:CustomerFormProps) => {
-  const { register,handleSubmit, formState: { errors } } = useForm<CustomerType>();
+const CustomerFormComponent = ({ onAddCustomer }: CustomerFormProps) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<CustomerType>();
 
   const onSubmit = (data: CustomerType) => {
-onAddCustomer(data);
+    onAddCustomer(data);
+    reset();
   };
 
   return (
@@ -28,8 +34,10 @@ onAddCustomer(data);
         <h1 className="text-3xl font-semibold rounded-2xl px-10 py-1 mb-6 w-fit mx-auto">
           Customer Form
         </h1>
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 max-w-lg mx-auto">
-          
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-4 max-w-lg mx-auto"
+        >
           <div className="flex flex-col">
             <label className="mb-1 font-semibold text-gray-700">Name:</label>
             <input
@@ -45,14 +53,18 @@ onAddCustomer(data);
           </div>
 
           <div className="flex flex-col">
-            <label className="mb-1 font-semibold text-gray-700">Image URL:</label>
+            <label className="mb-1 font-semibold text-gray-700">
+              Image URL:
+            </label>
             <input
               {...register("imageUrl", { required: true })}
               className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
               placeholder="Enter image URL"
             />
             {errors.imageUrl && (
-              <span className="text-red-500 text-sm mt-1">This field is required</span>
+              <span className="text-red-500 text-sm mt-1">
+                This field is required
+              </span>
             )}
           </div>
 
@@ -88,7 +100,10 @@ onAddCustomer(data);
           <div className="flex flex-col">
             <label className="mb-1 font-semibold text-gray-700">Country:</label>
             <input
-              {...register("address.country", { required: true, maxLength: 50 })}
+              {...register("address.country", {
+                required: true,
+                maxLength: 50,
+              })}
               className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
               placeholder="Enter country"
             />
@@ -98,15 +113,14 @@ onAddCustomer(data);
               </span>
             )}
           </div>
-<div className="flex justify-center">
-
-          <button
-            type="submit"
-            className="mt-4 bg-[#547792] text-white font-semibold py-2 px-4 rounded w-3/5"
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="mt-4 bg-[#547792] text-white font-semibold py-2 px-4 rounded w-3/5"
             >
-            Submit
-          </button>
-            </div>
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </div>
