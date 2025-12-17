@@ -63,6 +63,7 @@ const FooterComponent = () => {
       <div style={{ backgroundColor: '#547792', color: '#EEE9DC' }} className="py-4 text-sm text-center">
         © 2025 EmployeePortal. Built with ♥ by Fahad Bin Javed
       </div>
+      
     </footer>
   );
 };
