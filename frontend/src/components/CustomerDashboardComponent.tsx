@@ -16,7 +16,7 @@ const CustomerDashboardComponent = () => {
     setLoading(true);
     const fetchCustomers = async () => {
       try {
-        const response = await fetch("http://localhost:8080/customers");
+        const response = await fetch("data.json");
         if (!response.ok) {
           throw new Error("Failed to fetch customers");
         }
