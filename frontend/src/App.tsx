@@ -1,8 +1,9 @@
+import EmployeeDashboardComponent from "./components/EmployeeDashboardComponent";
 
 function App() {
   return (
     <>
-      <h1>My name is Fahad</h1>
+    <EmployeeDashboardComponent />
     </>
   );
 }
