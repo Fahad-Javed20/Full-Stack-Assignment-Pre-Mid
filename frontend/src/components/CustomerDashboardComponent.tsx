@@ -1,21 +1,21 @@
 import HeaderComponent from "./headerComponent";
 import NavComponent from "./NavComponent";
-import EmployeeFormComponent from "./EmployeeFormComponent";
-import EmployeeListComponent from "./EmployeeListComponent";
 import FooterComponent from "./FooterComponent";
 import HeroComponent from "./HeroComponent";
+import CustomerFormComponent from "./CustomerFormComponent";
+import CustomerListComponent from "./CustomerListComponent";
 
-const EmployeeDashboardComponent = () => {
+const CustomerDashboardComponent = () => {
   return (
     <div>
       <HeaderComponent />
       <NavComponent />
       <HeroComponent />
-      <EmployeeFormComponent />
-      <EmployeeListComponent />
+      <CustomerFormComponent />
+      <CustomerListComponent />
       <FooterComponent />
     </div>
   );
 };
 
-export default EmployeeDashboardComponent;
+export default CustomerDashboardComponent;

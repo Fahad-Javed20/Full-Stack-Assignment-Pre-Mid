@@ -27,13 +27,15 @@ const HeroComponent = () => {
           </div>
         </div>
 
-        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-          <img
-            className="object-cover object-center rounded shadow-lg"
-            alt="employee portal"
-            src="https://url-shortener.me/3XRP"
-          />
-        </div>
+        <div className="lg:max-w-md lg:w-4/5 md:w-3/5 w-4/5">
+  <img
+    className="object-cover object-center rounded-2xl shadow-lg lg:h-110 md:h-96 h-64"
+    alt="employee portal"
+    src="https://url-shortener.me/3XRP"
+  />
+</div>
+
+
       </div>
     </section>
   );

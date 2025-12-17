@@ -1,9 +1,8 @@
-import EmployeeDashboardComponent from "./components/EmployeeDashboardComponent";
-
+import EmployeeDashboardComponent from "./components/CustomerDashboardComponent";
 function App() {
   return (
     <>
-    <EmployeeDashboardComponent />
+      <EmployeeDashboardComponent />
     </>
   );
 }
