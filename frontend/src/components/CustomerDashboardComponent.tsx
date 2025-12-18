@@ -6,6 +6,7 @@ import CustomerFormComponent from "./CustomerFormComponent";
 import CustomerListComponent from "./CustomerListComponent";
 import { useEffect, useState } from "react";
 import type { CustomerType } from "../types/CustomerType";
+import TopCustomersComponent from "./TopCustomersComponent";
 
 const CustomerDashboardComponent = () => {
   const [customers, setCustomers] = useState<CustomerType[]>([]);
@@ -42,6 +43,7 @@ const CustomerDashboardComponent = () => {
       <NavComponent />
       <HeroComponent />
       <CustomerFormComponent onAddCustomer={handleAddCustomer} />
+      <TopCustomersComponent customers={customers} />
 
       <div className="my-10 px-5 md:px-10">
         {loading && (

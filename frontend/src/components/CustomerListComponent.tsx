@@ -7,6 +7,7 @@ interface CustomerListComponentProps {
 const CustomerListComponent = ({ customers }: CustomerListComponentProps) => {
   return (
     <div className="overflow-x-auto p-5 rounded-lg shadow-md bg-gray-100">
+      <h1 className="font-semibold py-2">Total Customers : {customers.length}</h1>
       <table className="min-w-full bg-white border border-gray-300">
         <thead className="bg-gray-200 text-gray-800">
           <tr>
