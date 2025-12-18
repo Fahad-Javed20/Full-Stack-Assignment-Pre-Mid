@@ -1,9 +1,10 @@
-import {Router} from "express"; 
-import StudentController from "../controllers/StudentController";
+import { Router } from "express";
+import CustomerController from "../controllers/StudentController";
 
 const router = Router();
-const studentController = new StudentController();  
-router.get("/", studentController.getAllStudents);
-router.post("/", studentController.createStudent);
+const customerController = new CustomerController();
+
+router.get("/", customerController.getAllCustomers);
+router.post("/", customerController.createCustomer);
 
 export default router;

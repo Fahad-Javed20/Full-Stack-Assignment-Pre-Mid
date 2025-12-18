@@ -1,12 +1,34 @@
 import mongoose from "mongoose";
 
-const studentSchema = new mongoose.Schema({
-  name: String,
-  class: String,
-  rollNumber: Number,
-  city: String,
+const customerSchema = new mongoose.Schema({
+  customerId: {
+    type: Number,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  imageUrl: {
+    type: String,
+    required: true,
+  },
+  age: {
+    type: Number,
+    required: true,
+  },
+  address: {
+    city: {
+      type: String,
+      required: true,
+    },
+    country: {
+      type: String,
+      required: true,
+    },
+  },
 });
 
-const Student = mongoose.model("Student", studentSchema);
+const Customer = mongoose.model("Customer", customerSchema);
 
-export default Student;
+export default Customer;
