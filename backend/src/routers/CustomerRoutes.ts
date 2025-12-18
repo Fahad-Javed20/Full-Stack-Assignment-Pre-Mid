@@ -5,7 +5,7 @@ const router = express.Router();
 const customerController = new CustomerController();
 
 router.get("/customers", customerController.getAllCustomers);
-router.get("/customers/:id", customerController.getCustomerById); // new route
+router.get("/customers/:id", customerController.getCustomerById);
 router.post("/customers", customerController.createCustomer);
 
 export default router;
