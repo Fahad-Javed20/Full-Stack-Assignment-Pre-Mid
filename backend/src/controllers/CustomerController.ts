@@ -13,6 +13,9 @@ class CustomerController {
 
   async createCustomer(req: Request, res: Response) {
     try {
+      if (!req.body || Object.keys(req.body).length === 0) {
+        return res.status(400).json({ error: "Request body is empty" });
+      }
       const newCustomer = new Customer(req.body);
       const customer = await newCustomer.save();
       res.status(201).json(customer);
@@ -23,7 +26,10 @@ class CustomerController {
 
   async getCustomerById(req: Request, res: Response) {
     try {
-      const id = req.params.customerId; 
+      const id = req.params.customerId;
+      if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+        return res.status(400).json({ error: "Invalid customer ID" });
+      }
       const customer = await Customer.findById(id);
       if (!customer) {
         return res.status(404).json({ error: "Customer not found" });
