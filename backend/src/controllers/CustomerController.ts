@@ -16,7 +16,7 @@ class CustomerController {
   }
 
   async getCustomerById(req: Request, res: Response) {
-    const { id } = req.params;
+    const id  = Number(req.params.customerId);
 
     Customer.findById(id)
       .then((customer) => {
