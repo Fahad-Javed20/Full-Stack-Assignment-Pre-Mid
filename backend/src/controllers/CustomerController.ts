@@ -23,6 +23,23 @@ class CustomerController {
       res.status(400).json({ error: err.message });
     }
   };
+
+  getCustomerById = async (req: Request, res: Response) => {
+    try {
+      const id = req.params.customerId;
+      // Validate MongoDB ObjectId
+      if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+        return res.status(400).json({ error: "Invalid customer ID" });
+      }
+      const customer = await Customer.findById(id);
+      if (!customer) {
+        return res.status(404).json({ error: "Customer not found" });
+      }
+      res.json(customer);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  };
 }
 
 export default CustomerController;
