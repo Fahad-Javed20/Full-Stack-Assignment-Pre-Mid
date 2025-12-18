@@ -14,6 +14,20 @@ class CustomerController {
       .then((customer) => res.status(201).json(customer))
       .catch((err) => res.status(400).json({ error: err.message }));
   }
+
+  async getCustomerById(req: Request, res: Response) {
+    const { id } = req.params;
+
+    Customer.findById(id)
+      .then((customer) => {
+        if (!customer) {
+          return res.status(404).json({ error: "Customer not found" });
+        }
+        res.json(customer);
+      })
+      .catch((err) => res.status(500).json({ error: err.message }));
+  }
 }
 
 export default CustomerController;
+
