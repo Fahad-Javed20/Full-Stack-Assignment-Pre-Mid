@@ -2,9 +2,12 @@ import express from "express";
 import cors from "cors";
 import { connectDB } from "./Config/db";
 import CustomerRoutes from "./routers/CustomerRoutes";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || "";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,7 +17,6 @@ connectDB();
 
 app.use("/api/customers", CustomerRoutes);
 
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
