@@ -1,8 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { connectDB } from "./Config/db";
-import StudentRoutes from "./routers/StudentRoutes";
-import RoomRoutes from "./routers/RoomRoutes";
+import CustomerRoutes from "./routers/CustomerRoutes";
 
 const app = express();
 const port = 3000;
@@ -13,8 +12,7 @@ app.use(cors());
 
 connectDB();
 
-app.use("/api/students", StudentRoutes);
-app.use("/api/rooms", RoomRoutes);
+app.use("/api/customers", CustomerRoutes);
 
 
 app.listen(port, () => {

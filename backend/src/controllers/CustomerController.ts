@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Customer from "../models/StudentModel";
+import Customer from "../models/CustomerModel";
 
 class CustomerController {
   async getAllCustomers(req: Request, res: Response) {
