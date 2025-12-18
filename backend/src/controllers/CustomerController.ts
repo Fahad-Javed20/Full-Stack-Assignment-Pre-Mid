@@ -27,9 +27,8 @@ class CustomerController {
   getCustomerById = async (req: Request, res: Response) => {
     try {
       const id = req.params.customerId;
-      // Validate MongoDB ObjectId
       if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-        return res.status(400).json({ error: "Invalid customer ID" });
+        return res.status(400).json({ error: "Invalid customer ID format" });
       }
       const customer = await Customer.findById(id);
       if (!customer) {

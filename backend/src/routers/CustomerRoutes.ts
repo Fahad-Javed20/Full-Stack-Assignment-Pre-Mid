@@ -4,8 +4,10 @@ import CustomerController from "../controllers/CustomerController";
 const router = express.Router();
 const customerController = new CustomerController();
 
-router.get("/customers", customerController.getAllCustomers);
-router.get("/customers/:customerId", customerController.getCustomerById);
-router.post("/customers", customerController.createCustomer);
+router.get("/", customerController.getAllCustomers);
+
+router.get("/:customerId", customerController.getCustomerById);
+
+router.post("/", customerController.createCustomer);
 
 export default router;
