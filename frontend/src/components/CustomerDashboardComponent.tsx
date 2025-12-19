@@ -1,4 +1,3 @@
-import HeaderComponent from "./headerComponent";
 import NavComponent from "./NavComponent";
 import FooterComponent from "./FooterComponent";
 import HeroComponent from "./HeroComponent";
@@ -7,6 +6,8 @@ import CustomerListComponent from "./CustomerListComponent";
 import { useEffect, useState } from "react";
 import type { CustomerType } from "../types/CustomerType";
 import TopCustomersComponent from "./TopCustomersComponent";
+import HeaderComponent from "./HeaderComponent";
+
 
 const CustomerDashboardComponent = () => {
   const [customers, setCustomers] = useState<CustomerType[]>([]);
@@ -15,9 +16,10 @@ const CustomerDashboardComponent = () => {
 
   useEffect(() => {
     setLoading(true);
+
     const fetchCustomers = async () => {
       try {
-        const response = await fetch("data.json");
+        const response = await fetch("http://localhost:3000/api/customers/");
         if (!response.ok) {
           throw new Error("Failed to fetch customers");
         }
@@ -30,12 +32,19 @@ const CustomerDashboardComponent = () => {
         setLoading(false);
       }
     };
+
     fetchCustomers();
   }, []);
 
-  const handleAddCustomer = (newCustomer: CustomerType) => {
-    setCustomers((prevCustomers) => [newCustomer,...prevCustomers]);
-  }
+  const handleAddCustomer = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/customers/");
+      const data = await response.json();
+      setCustomers(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div>

@@ -1,19 +1,9 @@
 interface CustomerFormProps {
-  onAddCustomer: (customer: CustomerType) => void;
+  onAddCustomer: () => void;
 }
 
 import { useForm } from "react-hook-form";
-
-type CustomerType = {
-  customerId: number;
-  name: string;
-  imageUrl: string;
-  age: number;
-  address: {
-    city: string;
-    country: string;
-  };
-};
+import type { CustomerType } from "../types/CustomerType";
 
 const CustomerFormComponent = ({ onAddCustomer }: CustomerFormProps) => {
   const {
@@ -23,9 +13,21 @@ const CustomerFormComponent = ({ onAddCustomer }: CustomerFormProps) => {
     formState: { errors },
   } = useForm<CustomerType>();
 
-  const onSubmit = (data: CustomerType) => {
-    onAddCustomer(data);
-    reset();
+  const onSubmit = async (data: CustomerType) => {
+    try {
+      await fetch("http://localhost:3000/api/customers/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      onAddCustomer(); 
+      reset();
+    } catch (error) {
+      console.error("Failed to save customer", error);
+    }
   };
 
   return (
