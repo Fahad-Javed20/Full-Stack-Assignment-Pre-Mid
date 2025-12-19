@@ -13,13 +13,12 @@ class CustomerController {
 
   createCustomer = async (req: Request, res: Response) => {
     try {
-      // Auto-generate customerId
       const lastCustomer = await Customer.findOne().sort({ customerId: -1 });
       const newCustomerId = lastCustomer ? lastCustomer.customerId + 1 : 1;
 
       const newCustomer = new Customer({
         ...req.body,
-        customerId: newCustomerId,  // assign auto-generated ID
+        customerId: newCustomerId, 
       });
 
       const savedCustomer = await newCustomer.save();
